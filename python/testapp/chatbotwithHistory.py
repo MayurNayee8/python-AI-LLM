@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-SYSTEM_CONTENT = '''
+SYSTEM_CONTEXT = '''
 act as general chatbot
 
 '''
@@ -45,7 +45,7 @@ def chatbot(query:str, history=None):
 
     if history is None:
         history = []
-    messages = [{"role":"system", "content":SYSTEM_CONTENT}]
+    messages = [{"role":"system", "content":SYSTEM_CONTEXT}]
 
     for q, a in history:
         messages.append({"role":"user", "content":q})
@@ -59,6 +59,6 @@ def chatbot(query:str, history=None):
         temperature= 0
     )
     return response.choices[0].message.content
-output = chatbot("tell me my name?")
+output = chatbot("what was the question i asked previoulsy?")
 #output = chatbot("What is highest earning export import business company in hong kong?")
 print(output)
